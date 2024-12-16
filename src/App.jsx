@@ -3,9 +3,8 @@ import languages from "../assets/languages"
 
 function App() {
 
- 
 
-  const [activeLanguage, setActiveLanguage] = useState(languages[0])
+  const [activeLanguage, setActiveLanguage] = useState(null)
 
   return (
     <>
@@ -14,17 +13,23 @@ function App() {
       <div>
       {
         languages.map((language) =>(
-          <button key ={language.id} className="btn btn-primary m-2" onClick={() => setActiveLanguage(language)}>{language.title}</button>      
+
+          <button key ={language.id} 
+          className={`${activeLanguage===language? "btn-warning" : "btn-primary"} btn m-2` }
+          onClick={() => setActiveLanguage(language)}>
+          {language.title}
+          </button>      
         ))
       }
       </div>
-
-      <div className="card">
+      {activeLanguage?
+    
+      (<div className="card">
         <h1>{activeLanguage.title}</h1>
         <p>{activeLanguage.description}</p>
-      
-      </div>
+      </div>): <p>nessun testo</p> }
      </div>
+     
     </>
   )
 }
