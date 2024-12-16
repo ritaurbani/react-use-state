@@ -14,12 +14,14 @@ function App() {
       <div>
       {
         languages.map((language) =>(
-          <button key ={language.id} className="btn btn-primary m-2" onClick={() => {setActiveLanguage(language)}}>{language.title}</button>      
+          <button key ={language.id} className="btn btn-primary m-2" onClick={() => setActiveLanguage(language)}>{language.title}</button>      
         ))
       }
       </div>
 
       <div className="card">
+        <h1>{activeLanguage.title}</h1>
+        <p>{activeLanguage.description}</p>
       
       </div>
      </div>
